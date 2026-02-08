@@ -5,7 +5,7 @@ import { getCellValue } from "./parser";
 /**
  * 不一致データをDATAシート形式でエクスポート
  * - 操作コード: "02" (更新)
- * - 住所フィールド: HOT犬索の値で置換
+ * - 住所フィールド: HOT検索の値で置換
  * - その他のフィールド: ジョブオプデータから引き継ぎ
  */
 export function generateOutputCSV(
@@ -39,7 +39,7 @@ export function generateOutputCSV(
       continue;
     }
 
-    // HOT犬索データを取得
+    // HOT検索データを取得
     const hotKensakuData = hotKensakuMap.get(jobNumber);
     if (!hotKensakuData) {
       continue; // データがない場合はスキップ
@@ -58,20 +58,20 @@ export function generateOutputCSV(
           break;
 
         case "郵便番号":
-          // HOT犬索の郵便番号からハイフンを除去
+          // HOT検索の郵便番号からハイフンを除去
           const postalCode = hotKensakuData.postalCode.replace(/-/g, "");
           outputRow.push(postalCode);
           break;
 
         case "都道府県市区町村":
-          // HOT犬索の都道府県 + 市区町村
+          // HOT検索の都道府県 + 市区町村
           outputRow.push(
             hotKensakuData.prefecture + hotKensakuData.city
           );
           break;
 
         case "番地":
-          // HOT犬索の番地
+          // HOT検索の番地
           outputRow.push(hotKensakuData.streetAddress || "");
           break;
 

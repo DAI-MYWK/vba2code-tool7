@@ -19,7 +19,7 @@ export interface JobOpData {
   [key: string]: string; // 動的キー対応
 }
 
-// HOT犬索データの型定義
+// HOT検索データの型定義
 export interface HotKensakuData {
   dataType: string; // A列: データ区分
   jobCode: string; // B列: 求人コード [251073560040]形式
@@ -42,20 +42,20 @@ export interface HotKensakuData {
 export interface MatchResult {
   jobNumber: string; // 求人番号
   jobOpAddress: string; // ジョブオプの住所
-  hotKensakuAddress: string; // HOT犬索の住所
+  hotKensakuAddress: string; // HOT検索の住所
   isMatch: boolean; // TRUE=一致, FALSE=不一致
-  hotKensakuPostalCode?: string; // HOT犬索の郵便番号 (不一致時のみ)
-  hotKensakuCity?: string; // HOT犬索の市区町村 (不一致時のみ)
-  hotKensakuStreet?: string; // HOT犬索の番地 (不一致時のみ)
+  hotKensakuPostalCode?: string; // HOT検索の郵便番号 (不一致時のみ)
+  hotKensakuCity?: string; // HOT検索の市区町村 (不一致時のみ)
+  hotKensakuStreet?: string; // HOT検索の番地 (不一致時のみ)
   streetDuplicationCheck: number; // 番地重複チェック結果
 }
 
 // 出力データ(DATAシート)の型定義
 export interface OutputData extends JobOpData {
   operationCode: "02"; // 更新操作固定
-  postalCode: string; // HOT犬索の郵便番号(ハイフン除去済み)
-  cityAddress: string; // HOT犬索の都道府県市区町村
-  streetAddress: string; // HOT犬索の番地
+  postalCode: string; // HOT検索の郵便番号(ハイフン除去済み)
+  cityAddress: string; // HOT検索の都道府県市区町村
+  streetAddress: string; // HOT検索の番地
 }
 
 // CSVパース結果の型定義

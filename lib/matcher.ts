@@ -26,9 +26,9 @@ export function normalizeAddress(address: string): string {
 }
 
 /**
- * HOT犬索データをMapに変換 (高速検索用)
+ * HOT検索データをMapに変換 (高速検索用)
  * キー: 求人コード (例: "[251125380015]")
- * 値: HOT犬索データ
+ * 値: HOT検索データ
  */
 export function createHotKensakuMap(
   parsed: ParsedCSV
@@ -76,7 +76,7 @@ function checkStreetDuplication(cityAddress: string, streetAddress: string): num
  * 住所の前方一致判定
  * Excel数式: =IF(A2="","",IF(OR(COUNTIF(B2,C2&"*")>0,COUNTIF(B2,SUBSTITUTE(C2,"ケ","ヶ")&"*")>0),IF(H2=0,TRUE,FALSE),FALSE))
  *
- * ジョブオプ住所がHOT犬索住所で始まるかをチェック
+ * ジョブオプ住所がHOT検索住所で始まるかをチェック
  * - 通常の前方一致
  * - 「ケ」→「ヶ」変換後の前方一致
  * - 番地重複がない場合のみTRUE
@@ -104,7 +104,7 @@ function isAddressMatch(
 }
 
 /**
- * ジョブオプデータとHOT犬索データを照合する
+ * ジョブオプデータとHOT検索データを照合する
  */
 export function matchAddresses(
   jobOpParsed: ParsedCSV,
@@ -127,11 +127,11 @@ export function matchAddresses(
     const streetAddress = getCellValue(row, jobOpParsed.headers, "番地");
     const jobOpAddress = cityAddress + streetAddress;
 
-    // HOT犬索データをXLOOKUP (Map検索)
+    // HOT検索データをXLOOKUP (Map検索)
     const hotKensakuData = hotKensakuMap.get(jobNumber);
 
     if (!hotKensakuData) {
-      // HOT犬索にデータがない場合は不一致扱い
+      // HOT検索にデータがない場合は不一致扱い
       results.push({
         jobNumber,
         jobOpAddress,
@@ -142,7 +142,7 @@ export function matchAddresses(
       continue;
     }
 
-    // HOT犬索の住所を結合 (都道府県 + 市区町村)
+    // HOT検索の住所を結合 (都道府県 + 市区町村)
     const hotKensakuAddress = hotKensakuData.prefecture + hotKensakuData.city;
 
     // 番地重複チェック

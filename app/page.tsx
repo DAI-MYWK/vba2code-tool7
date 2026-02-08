@@ -54,15 +54,15 @@ export default function Home() {
       const jobOpParsed = await parseFile(jobOpFile);
       validateParsedData(jobOpParsed, JOBOP_REQUIRED_COLUMNS);
 
-      // ステップ2: HOT犬索データのパース
+      // ステップ2: HOT検索データのパース
       setProgress(30);
-      setProgressMessage("HOT犬索データを読み込んでいます...");
+      setProgressMessage("HOT検索データを読み込んでいます...");
       const hotKensakuParsed = await parseFile(hotKensakuFile);
       validateParsedData(hotKensakuParsed, HOTKENSAKU_REQUIRED_COLUMNS);
 
-      // ステップ3: HOT犬索データをMap化
+      // ステップ3: HOT検索データをMap化
       setProgress(50);
-      setProgressMessage("HOT犬索データをインデックス化しています...");
+      setProgressMessage("HOT検索データをインデックス化しています...");
       const hotKensakuMap = createHotKensakuMap(hotKensakuParsed);
 
       // ステップ4: 住所照合処理
@@ -122,7 +122,7 @@ export default function Home() {
         <h2 className="text-xl font-bold text-primary mb-3">使い方</h2>
         <ol className="list-decimal list-inside space-y-2 text-sm text-gray-700">
           <li>ジョブオプから全求人データをCSVでエクスポートしてください</li>
-          <li>HOT犬索から全求人データをCSVでエクスポートしてください</li>
+          <li>HOT検索から全求人データをCSVでエクスポートしてください</li>
           <li>2つのファイルをアップロードして「照合開始」をクリック</li>
           <li>住所不一致のデータが検出されます</li>
           <li>「修正用CSVをダウンロード」でジョブオプにアップロード可能なファイルを取得</li>
@@ -138,7 +138,7 @@ export default function Home() {
             selectedFileName={jobOpFile?.name}
           />
           <FileUploader
-            label="2. HOT犬索データ"
+            label="2. HOT検索データ"
             onFileSelect={setHotKensakuFile}
             selectedFileName={hotKensakuFile?.name}
           />

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "住所照合ツール - ホットスタッフ",
-  description: "ジョブオプとHOT犬索の住所データを照合し、不一致を検出するツール",
+  description: "ジョブオプとHOT検索の住所データを照合し、不一致を検出するツール",
 };
 
 export default function RootLayout({
@@ -17,7 +17,7 @@ export default function RootLayout({
         <header className="bg-primary text-white py-6 px-8 shadow-md">
           <h1 className="text-2xl font-bold">住所照合ツール</h1>
           <p className="text-sm text-blue-100 mt-1">
-            ジョブオプ × HOT犬索 住所データ照合システム
+            ジョブオプ × HOT検索 住所データ照合システム
           </p>
         </header>
         <main className="container mx-auto px-4 py-8 max-w-7xl">

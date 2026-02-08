@@ -41,9 +41,9 @@ export default function ResultTable({ results, totalCount }: ResultTableProps) {
                 <tr>
                   <th className="table-header">求人番号</th>
                   <th className="table-header">ジョブオプ住所</th>
-                  <th className="table-header">HOT犬索住所</th>
-                  <th className="table-header">HOT犬索郵便番号</th>
-                  <th className="table-header">HOT犬索番地</th>
+                  <th className="table-header">HOT検索住所</th>
+                  <th className="table-header">HOT検索郵便番号</th>
+                  <th className="table-header">HOT検索番地</th>
                 </tr>
               </thead>
               <tbody>
